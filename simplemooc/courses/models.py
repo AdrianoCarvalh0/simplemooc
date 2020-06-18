@@ -30,3 +30,11 @@ class Course(models.Model):
 
     def __str__(self):
         return self.name
+
+    class Meta:
+        verbose_name = 'Curso'
+        verbose_name_plural = 'Cursos'
+        #ordena pelo nome de forma ascendente
+        ordering= ['name']
+        # ordena pelo nome de forma decrescente
+        # ordering = ['-name']
