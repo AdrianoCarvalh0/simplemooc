@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Course
+from .forms import ContactCourse
 # Create your views here.
 
 
@@ -15,8 +16,17 @@ def index(request):
 def details(request, slug):
     #se não existir retorna o erro 404. Precisa do model e da chave
     course = get_object_or_404(Course,slug=slug)
+    context = {}
+
+    if request.method == 'POST':
+        # A variável POST é um dicionário com todos os campos submetidos pelo usuário
+        form = ContactCourse(request.POST)
+        if form.is_valid():
+            context['is_valid'] = True
+            form = ContactCourse()
+    else:
+        form = ContactCourse()
+    context['form'] = form
+    context['course']= course
     template_name = 'courses/details.html'
-    context ={
-        'course': course
-    }
     return render(request, template_name, context)
