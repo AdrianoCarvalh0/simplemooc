@@ -87,7 +87,7 @@ WSGI_APPLICATION = 'simplemooc.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'simplemooc',
+        'NAME': 'simplemooc_new',
         'USER': 'postgres',
         'PASSWORD': '',
         'HOST': '127.0.0.1',
@@ -135,6 +135,11 @@ STATIC_URL = '/static/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'simplemooc', 'media')
 MEDIA_URL = '/media/'
 
+#página de login
 LOGIN_URL = 'accounts:login'
+#depois que faz o login manda pro home
 LOGIN_REDIRECT_URL = 'core:home'
+#faz o logout
 LOGOUT_URL = 'accounts:logout'
+#seta um novo tipo de user. Agora o django usurá o 'accounts.User(Model)' e não o auth.user padrão
+AUTH_USER_MODEL = 'accounts.User'
