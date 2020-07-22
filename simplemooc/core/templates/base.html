@@ -22,6 +22,7 @@
                 <li>{{ user.username.title }} </a></li>
                 <li><a href="{% url 'accounts:logout' %}">Sair</a></li>
                 <li><a href="{% url 'accounts:dashboard' %}">Painel</a></li>
+<!--                <li><a href="{% url 'accounts:edit_password' %}">Alterar Senha</a></li>-->
             {% else %}
                   <li><a href="{% url 'accounts:login' %}">Logar</a></li>
             {% endif %}
